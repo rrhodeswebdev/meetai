@@ -204,7 +204,7 @@ export const SignUpView = () => {
                       href="/sign-in"
                       className="underline underline-offset-4"
                     >
-                      Sign in
+                      Sign up
                     </Link>
                   </p>
                 </div>
