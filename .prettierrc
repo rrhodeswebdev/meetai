@@ -1,0 +1,29 @@
+{
+  "semi": true,
+  "singleQuote": false,
+  "trailingComma": "es5",
+  "tabWidth": 4,
+  "useTabs": true,
+  "printWidth": 80,
+  "bracketSpacing": true,
+  "bracketSameLine": false,
+  "arrowParens": "avoid",
+  "endOfLine": "lf",
+  "jsxSingleQuote": false,
+  "plugins": ["prettier-plugin-tailwindcss"],
+  "tailwindFunctions": ["clsx", "cn"],
+  "overrides": [
+    {
+      "files": "*.md",
+      "options": {
+        "printWidth": 100
+      }
+    },
+    {
+      "files": "*.json",
+      "options": {
+        "tabWidth": 2
+      }
+    }
+  ]
+}
