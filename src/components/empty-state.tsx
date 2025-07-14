@@ -3,13 +3,18 @@ import Image from "next/image";
 type Props = {
 	title: string;
 	description: string;
+	image?: string;
 };
 
-export function EmptyState({ title, description }: Props) {
+export function EmptyState({
+	title,
+	description,
+	image = "/empty.svg",
+}: Props) {
 	return (
 		<div className="flex flex-col items-center justify-center">
 			<Image
-				src="/empty.svg"
+				src={image}
 				alt="Empty State Logo"
 				width={240}
 				height={240}
