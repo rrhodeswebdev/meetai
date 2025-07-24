@@ -15,6 +15,8 @@ import {
 import Link from "next/link";
 import Markdown from "react-markdown";
 import { MeetingGetOne } from "../../types";
+import { ChatProvider } from "./chat-provider";
+import { Transcript } from "./transcript";
 
 type Props = {
 	data: MeetingGetOne;
@@ -169,6 +171,12 @@ export function CompletedState({ data }: Props) {
 							</div>
 						</div>
 					</div>
+				</TabsContent>
+				<TabsContent value="transcript">
+					<Transcript meetingId={data.id} />
+				</TabsContent>
+				<TabsContent value="chat">
+					<ChatProvider meetingId={data.id} meetingName={data.name} />
 				</TabsContent>
 				<TabsContent value="recording">
 					<div className="rounded-lg border bg-white px-4 py-5">
