@@ -1,17 +1,6 @@
-import { authClient } from "@/lib/auth-client";
-import {
-	DropdownMenu,
-	DropdownMenuTrigger,
-	DropdownMenuContent,
-	DropdownMenuLabel,
-	DropdownMenuSeparator,
-	DropdownMenuItem,
-} from "@/components/ui/dropdown-menu";
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { GeneratedAvatar } from "@/components/generated-avatar";
-import { ChevronDownIcon, CreditCardIcon, LogOutIcon } from "lucide-react";
-import { useRouter } from "next/navigation";
-import { useIsMobile } from "@/hooks/use-mobile";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 import {
 	Drawer,
 	DrawerContent,
@@ -21,7 +10,18 @@ import {
 	DrawerTitle,
 	DrawerTrigger,
 } from "@/components/ui/drawer";
-import { Button } from "@/components/ui/button";
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuLabel,
+	DropdownMenuSeparator,
+	DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { authClient } from "@/lib/auth-client";
+import { ChevronDownIcon, CreditCardIcon, LogOutIcon } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export function DashboardUserButton() {
 	const router = useRouter();
@@ -73,7 +73,10 @@ export function DashboardUserButton() {
 						<DrawerDescription>{data.user.email}</DrawerDescription>
 					</DrawerHeader>
 					<DrawerFooter>
-						<Button variant="outline" onClick={() => {}}>
+						<Button
+							variant="outline"
+							onClick={() => authClient.customer.portal()}
+						>
 							<CreditCardIcon className="size-4 text-black" />
 							Billing
 						</Button>
@@ -119,7 +122,10 @@ export function DashboardUserButton() {
 					</div>
 				</DropdownMenuLabel>
 				<DropdownMenuSeparator />
-				<DropdownMenuItem className="flex cursor-pointer items-center justify-between">
+				<DropdownMenuItem
+					className="flex cursor-pointer items-center justify-between"
+					onClick={() => authClient.customer.portal()}
+				>
 					Billing
 					<CreditCardIcon className="size-4" />
 				</DropdownMenuItem>

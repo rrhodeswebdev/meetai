@@ -9,7 +9,11 @@ import { agents, meetings, user } from "@/db/schema";
 import { generateAvatarUri } from "@/lib/avatar";
 import { streamChat } from "@/lib/stream-chat";
 import { streamVideo } from "@/lib/stream-video";
-import { createTRPCRouter, protectedProcedure } from "@/trpc/init";
+import {
+	createTRPCRouter,
+	premiumProcedure,
+	protectedProcedure,
+} from "@/trpc/init";
 import { TRPCError } from "@trpc/server";
 import {
 	and,
@@ -266,7 +270,7 @@ export const meetingsRouter = createTRPCRouter({
 
 			return existingMeeting;
 		}),
-	create: protectedProcedure
+	create: premiumProcedure("meetings")
 		.input(meetingsInsertSchema)
 		.mutation(async ({ input, ctx }) => {
 			const [createdMeeting] = await db
